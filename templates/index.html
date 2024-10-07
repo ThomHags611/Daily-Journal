@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Journal</title>
+    <link rel = "stylesheet" href = "../static/style.css">
+    <script src = "https://cdn.tailwindcss.com"></script>
+    <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class = "bg-gray-100 leading-normal tracking-normal">
+    <div class = "container mx-auto p-6">
+        <h1 class = "text-4xl text-gray-700 mb-6 font-bold">Daily Journal</h1>
+        
+        <div class = "bg-white p-6 rounded-lg shadow-mg">
+            <h2 class = "text-2xl font-semibold text-gray-700 mb-4">Add New Entry</h2>
+            <form class = "space-y-4" id = "journal-form">
+                <div>
+                    <label for = "date" class = "block text-gray-600 font-medium">Date</label>
+                    <input type = "date" id = "date" class = "w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></intput>
+                </div>
+                <div>
+                    <label for = "content" class = "block text-gray-600 font-medium"></label>
+                    <textarea id="content" rows="4" class = "w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                </div>
+                <button type = "submit" class = "w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-700">Add Entry</button>
+            </form>
+        </div>
+        <div class = "mt-8">
+            <h2 class="text-2xl font- text-gray-700 mb-5">Your Journal Entries</h2>
+            <ul id="journal-list" class = "space-y-4"></ul>
+        </div>
+    </div>
+    <script src = "../static/ap.js"></script>
+</body>
+
+</html>
