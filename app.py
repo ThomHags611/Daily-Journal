@@ -14,13 +14,18 @@ def create_entry():
     global next_id 
     data = request.get_json()
     new_entry = {
-        'id': next, 
+        'id': next_id, 
         'date': data['date'],
         'content': data['content']
     }
     journal_entries.append(new_entry)
     next_id +=1
     return jsonify(new_entry), 201
+
+
+@app.route('/journal', methods = ['GET'])
+def get_entries():
+    return jsonify(journal_entries)
 
 @app.route('/journal/<int:entry_id>', methods = ['PUT'])
 def update_entry(entry_id):
@@ -31,6 +36,7 @@ def update_entry(entry_id):
             entry['content'] = data.get('content', entry['content'])
             return jsonify(entry)
         return jsonify({'error': 'Entry not found'}), 404
+    
 @app.route('/journal/<int:entry_id>', methods=['DELETE'])
 def delete_entry(entry_id):
     global journal_entries
@@ -38,4 +44,4 @@ def delete_entry(entry_id):
     return jsonify({'message': 'Entry Deleted'}), 200
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug = True, port=5500)
