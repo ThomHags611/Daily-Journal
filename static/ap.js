@@ -5,7 +5,7 @@ $(document).ready(function() {
             $('#journal-list').empty();
             entries.forEach(function(entry){
                 $("#journal-list").append(`
-                    <li class="flex justify-between data-id="${entry.id}">
+                    <li class="flex justify-between"data-id="${entry.id}">
                         <div class="entry">
                             <strong>${entry.date}</strong>: ${entry.content}
                         </div>  
@@ -47,8 +47,9 @@ $(document).ready(function() {
         const newContent = prompt("Enter new content: ", li.contents().filter(function(){return this.nodeType ===3;}).text().trim())
 
         if(newDate && newContent){
+            console.log(entryId)
             $.ajax({
-                url: '/journal/' + entryId, 
+                url: '/journal/'+ entryId, 
                 method: 'PUT', 
                 contentType: 'application/json', 
                 data: JSON.stringify({date: newDate, content: newContent}), 
@@ -56,6 +57,7 @@ $(document).ready(function() {
                     loadJournalEntries();
                 }
             })
+            
         }
     })
 
@@ -64,7 +66,7 @@ $(document).ready(function() {
         console.log(entryId)
         if(confirm('Are you sure you want to delete this entry?')){
             $.ajax({
-                url:'/journal/' + entryId, 
+                url:'/journal/0',// + entryId, 
                 method: 'DELETE', 
                 success: function(){
                     loadJournalEntries();
